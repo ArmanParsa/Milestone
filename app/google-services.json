@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "462590575468",
+    "firebase_url": "https://milestone-424ea.firebaseio.com",
+    "project_id": "milestone-424ea",
+    "storage_bucket": "milestone-424ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462590575468:android:00cb171814e80272",
+        "android_client_info": {
+          "package_name": "com.milestonee.milestone_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "462590575468-fs4gugqgno9hh1kogv67moa6gikpjptg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.milestonee.milestone_project",
+            "certificate_hash": "3ff28358f4ed8397ddef49795e64049e47af3db9"
+          }
+        },
+        {
+          "client_id": "462590575468-jl8tfmju0q2m3q9h61sp6446bkv91r12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyx3CiaS7uKCGluhiSHiW9EY8HxIpzrHU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "462590575468-jl8tfmju0q2m3q9h61sp6446bkv91r12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
