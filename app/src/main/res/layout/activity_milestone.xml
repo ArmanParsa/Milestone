@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.milestonee.milestone_project.MilestoneActivity">
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/homebackground" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="11dp"
+            android:text="                " />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/textView2"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageView4"
+            android:layout_marginTop="16dp"
+            android:text="YOUR MILESTONE"
+            android:textAlignment="center"
+            android:textSize="30sp"></TextView>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/bar" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="492dp"
+            android:layout_height="135dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:paddingHorizontal="62dp"
+            app:srcCompat="@drawable/stepss" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/imageView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="Final Year Project"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView6"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="10 March 2018" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView8"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="05 April 2018"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_below="@+id/textView7"
+            android:layout_marginEnd="47dp"
+            android:layout_marginRight="47dp"
+            android:layout_marginTop="17dp"
+            android:layout_toLeftOf="@+id/textView2"
+            android:layout_toStartOf="@+id/textView2"
+            android:text="               " />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_alignBaseline="@+id/textView10"
+            android:layout_alignBottom="@+id/textView10"
+            android:layout_alignEnd="@+id/textView2"
+            android:layout_alignRight="@+id/textView2"
+            android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"
+            android:text="                " />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_toEndOf="@+id/textView10"
+            android:layout_toRightOf="@+id/textView10"
+            android:text="              " />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:layout_toEndOf="@+id/textView12"
+            android:layout_toRightOf="@+id/textView12"
+            android:text="                " />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/textView13"
+            android:layout_toRightOf="@+id/textView13"
+            android:text="                " />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="107dp"
+            android:layout_height="75dp"
+            android:layout_alignEnd="@+id/textView10"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/textView10"
+            android:layout_marginBottom="57dp"
+            android:paddingHorizontal="20dp"
+            app:srcCompat="@drawable/star" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="107dp"
+            android:layout_height="75dp"
+            android:layout_alignEnd="@+id/textView11"
+            android:layout_alignRight="@+id/textView11"
+            android:layout_alignTop="@+id/imageView7"
+            android:paddingHorizontal="20dp"
+            app:srcCompat="@drawable/star" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="107dp"
+            android:layout_height="75dp"
+            android:layout_alignTop="@+id/imageView8"
+            android:layout_centerHorizontal="true"
+            android:paddingHorizontal="20dp"
+            app:srcCompat="@drawable/star" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="107dp"
+            android:layout_height="75dp"
+            android:layout_alignLeft="@+id/textView12"
+            android:layout_alignStart="@+id/textView12"
+            android:layout_alignTop="@+id/imageView9"
+            android:layout_marginLeft="27dp"
+            android:layout_marginStart="27dp"
+            android:paddingHorizontal="20dp"
+            app:srcCompat="@drawable/star" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="166dp"
+            android:layout_height="47dp"
+            android:layout_alignTop="@+id/imageView10"
+            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="14dp"
+            android:layout_toEndOf="@+id/imageView9"
+            android:layout_toRightOf="@+id/imageView9"
+            android:paddingHorizontal="20dp"
+            app:srcCompat="@drawable/badge" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
