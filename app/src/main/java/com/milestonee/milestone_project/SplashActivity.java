@@ -1,9 +1,15 @@
 package com.milestonee.milestone_project;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -20,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
+
          /* New Handler to start the Menu-Activity
          * and close this Splash-Screen after some seconds.*/
         new Handler().postDelayed(new Runnable(){
@@ -32,4 +39,6 @@ public class SplashActivity extends AppCompatActivity {
             }
         }, SPLASH_DISPLAY_LENGTH);
     }
+
+
 }
