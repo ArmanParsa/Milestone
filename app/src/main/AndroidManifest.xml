@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.milestonee.milestone_project">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +20,9 @@
         </activity>
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".MilestoneActivity"></activity>
+        <activity android:name=".MilestoneActivity" />
+        <activity android:name=".NewTaskActivity" />
+        <activity android:name=".EndTaskActivity"></activity>
     </application>
 
 </manifest>

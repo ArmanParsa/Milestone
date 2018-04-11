@@ -8,6 +8,8 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -63,7 +65,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             }
             else if (activeNetwork.isConnected())
             {
-
                 FirebaseDatabase database_5 = FirebaseDatabase.getInstance();
                 DatabaseReference myRef5 = database_5.getReference("Login");
                 myRef5.child("I"+("1")).setValue("parth.prs.shah@gmail.com"+"§"+"parth1234"+"§"+"Parth"+"§"+"Shah"+"§"+"07858773873"+"§");
@@ -72,8 +73,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 //"Java§10 §2018/03/19 15:17:17§#arrays§Ishveer Degun§"
                 FirebaseDatabase database_4 = FirebaseDatabase.getInstance();
                 DatabaseReference myRef4 = database_4.getReference("Milestone");
-                myRef4.child("M"+("1")).setValue("Final Year Project"+"§"+"10"+"§"+"2018/04/01 5:17:17"+"§"+"Task1"+"§"+"10"+"§");
-                myRef4.child("M"+("2")).setValue("Milestone Project"+"§"+"3"+"§"+"2018/04/02 4:17:17"+"§"+"Task1"+"§"+"10"+"§");
+                myRef4.child("parthprsshah").setValue("Final Year Project"+"§"+"10"+"§"+"2018/04/01 5:17:17"+"§"+"Task1"+"§"+"10"+"§");
+                myRef4.child("arman7parsa").setValue("Milestone Project"+"§"+"3"+"§"+"2018/04/02 4:17:17"+"§"+"Task1"+"§"+"10"+"§");
             //    Toast.makeText(getBaseContext(),"Sucessfully Registered!",Toast.LENGTH_LONG).show();
 
                 FirebaseDatabase database_b = FirebaseDatabase.getInstance();
@@ -173,6 +174,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             progress.show();
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         @Override
         protected Void doInBackground(String... params) {
             //{M1=Final Year Project§10§2018/04/01 5:17:17§Task1§10§, M2=Milestone Project§3§2018/04/02 4:17:17§Task1§10§}
@@ -194,7 +196,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 result = result.substring(1, result.length()-1);
                 System.out.println("*********************"+result);
                 sessions = new String[++lengthh];
-
+                //arman7parsa=Milestone Project§3§2018/04/02 4:17:17§Task1§10§, parthprsshah=Final Year Project§10§2018/04/01 5:17:17§Task1§10§
                 Scanner in = new Scanner(result).useDelimiter("\\,");
                 int neww=0;
                 while (in.hasNext() == true) {
@@ -202,40 +204,34 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     String G = in.next();
                     G = G.trim();
                     if (G.length() != 0) {
-                        id=G.substring(0,G.indexOf("="));
-                        G=G.substring(G.indexOf("=")+1, G.length()-1);
-                        Scanner innn=new Scanner(G).useDelimiter("\\§");
-                        String itemm = "";int count=0;
-                        while(innn.hasNext()==true)
-                        {
-                            String P=innn.next();
-                           if(count==0)
-                            {
-                                gen+=P+"§";
-                                itemm="Milestone Name: "+P+"";
+                        id = G.substring(0, G.indexOf("="));
+                        System.out.println("*/*/*/*/*/*/*/*/*/*/*/*/*"+id+"    "+""+getUserName(UserEmail.getText() + ""));
+                        if (id.equals("" + getUserName(UserEmail.getText() + "")) == true) {
+                            G = G.substring(G.indexOf("=") + 1, G.length() - 1);
+                            Scanner innn = new Scanner(G).useDelimiter("\\§");
+                            String itemm = "";
+                            int count = 0;
+                            while (innn.hasNext() == true) {
+                                String P = innn.next();
+                                if (count == 0) {
+                                    gen += P + "§";
+                                    itemm = "Milestone Name: " + P + "";
+                                } else if (count == 1) {
+                                    itemm += '\n' + "Time(Days): " + P + "";
+                                } else if (count == 2) {
+                                    itemm += '\n' + "Date: " + P + "";
+                                } /*else if (count == 3) {
+                                    itemm += '\n' + "Task " + P + "";
+                                } else if (count == 4) {
+                                    itemm += '\n' + "Time Frame" + id;
+                                    gen += P + "§";
+                                }*/
+                                count++;
                             }
-                            else if(count==1)
-                            {
-                                itemm+='\n'+"Time(Days): "+P+"";
+                            if (num < lengthh) {
+                                sessions[num++] = G + "";
+                                adapter.add(itemm + "");
                             }
-                            else if(count==2)
-                            {
-                                itemm+='\n'+"Date: "+P+"";
-                            }
-                            else if(count==3)
-                            {
-                                itemm+='\n'+"Task "+P+"";
-                            }
-                            else if(count==4)
-                            {
-                                itemm+='\n'+"Time Frame"+id;
-                                gen+=P+"§";
-                            }
-                            count++;
-                        }
-                        if (num < lengthh) {
-                            sessions[num++] = G+"";
-                            adapter.add(itemm + "");
                         }
                     }
                     //genius[neww++]=gen+"";
@@ -283,5 +279,25 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         // rather than create a new one. In this example, the notification’s ID is 001//
 
         mNotificationManager.notify(001, mBuilder.build());
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static String getUserName(String IDD)
+    {
+        String neww="";
+        for(int i=0;i<IDD.length();i++)
+        {
+            char c=IDD.charAt(i);
+            if(c=='@')
+            {
+                break;
+            }
+            else if(Character.isDigit(c)==true || Character.isAlphabetic(c)==true)
+            {
+
+                neww+=c+"";
+            }
+        }
+        return neww;
     }
 }
