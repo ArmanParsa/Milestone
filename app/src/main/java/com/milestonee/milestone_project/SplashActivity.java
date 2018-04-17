@@ -15,16 +15,17 @@ import android.view.WindowManager;
 
 public class SplashActivity extends AppCompatActivity {
     /** Duration of wait **/
+    // 1000 milliseconds = 1 sec
     private final int SPLASH_DISPLAY_LENGTH = 1000;
 
     /** Called when the activity is first created. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);//Hide the title bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_splash);
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);//Make it fullscreen
+        setContentView(R.layout.activity_splash);//Embed the xml(UI)
 
 
          /* New Handler to start the Menu-Activity
@@ -33,9 +34,9 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(SplashActivity.this,HomeActivity.class);
-                SplashActivity.this.startActivity(mainIntent);
-                SplashActivity.this.finish();
+                Intent mainIntent = new Intent(SplashActivity.this,HomeActivity.class);//Intent
+                SplashActivity.this.startActivity(mainIntent);//Start Activity
+                SplashActivity.this.finish();//End Activity
             }
         }, SPLASH_DISPLAY_LENGTH);
     }

@@ -31,7 +31,7 @@ import java.util.Scanner;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    static String value="",value1="",id="";
+    static String value="",value1="",id="";//Variable Description
     static String genius[],uid[];
     static int datab=0;
     static EditText UserEmail, UserPassword;
@@ -44,47 +44,49 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     static  String result="";
     static int num,lengthh;
     static int indexx=0;
-    private ProgressDialog progress;
+    private ProgressDialog progress;//ProgressDialog for Async Task (Background Network related Processes)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        UserEmail = (EditText) findViewById(R.id.editText);
-        UserEmail.setText("arman7.parsa@gmail.com");
-        UserPassword = (EditText) findViewById(R.id.editText2);
-        UserPassword.setText("arman1234");
+        UserEmail = (EditText) findViewById(R.id.editText);//Initialise UserEmail
+        UserEmail.setText("arman7.parsa@gmail.com");//Set UserEmail to my ID
+        UserPassword = (EditText) findViewById(R.id.editText2);//Initialise Userpassword
+        UserPassword.setText("arman1234");//Set UserPassword to my Password
         try
         {
-            ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-            if (activeNetwork == null)
+            ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE); // Connectivity Manager Object
+            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();//Call Object to check availability of Internet Connection
+            if (activeNetwork == null) // If no Internet Connection
             {
                // txtView.setVisibility(View.VISIBLE);
                 //txtView.setTextColor(Color.parseColor("#ff0000"));
                // txtView.setText("Please check your Internet Connection");
             }
-            else if (activeNetwork.isConnected())
+            else if (activeNetwork.isConnected()) // If Internet Access Available
             {
-                FirebaseDatabase database_5 = FirebaseDatabase.getInstance();
-                DatabaseReference myRef5 = database_5.getReference("Login");
-                myRef5.child("I"+("1")).setValue("parth.prs.shah@gmail.com"+"§"+"parth1234"+"§"+"Parth"+"§"+"Shah"+"§"+"07858773873"+"§");
+                /*FirebaseDatabase database_5 = FirebaseDatabase.getInstance();//Firebase Object
+                DatabaseReference myRef5 = database_5.getReference("Login");//Child specific object
+                myRef5.child("I"+("1")).setValue("parth.prs.shah@gmail.com"+"§"+"parth1234"+"§"+"Parth"+"§"+"Shah"+"§"+"07858773873"+"§");//write data
                 myRef5.child("I"+("2")).setValue("arman7.parsa@gmail.com"+"§"+"arman1234"+"§"+"Arman"+"§"+"Parsa"+"§"+"07858773873"+"§");
                // Toast.makeText(getBaseContext(),"Sucessfully Registered!",Toast.LENGTH_LONG).show();
 //"Java§10 §2018/03/19 15:17:17§#arrays§Ishveer Degun§"
                 FirebaseDatabase database_4 = FirebaseDatabase.getInstance();
                 DatabaseReference myRef4 = database_4.getReference("Milestone");
                 myRef4.child("parthprsshah").setValue("Final Year Project"+"§"+"10"+"§"+"2018/04/01 5:17:17"+"§"+"Task1"+"§"+"10"+"§");
+
                 myRef4.child("arman7parsa").setValue("Milestone Project"+"§"+"3"+"§"+"2018/04/02 4:17:17"+"§"+"Task1"+"§"+"10"+"§");
+                myRef4.child("arman7parsa").setValue("FYP Viva"+"§"+"10"+"§"+"2018/04/11 7:17:17"+"§"+"Task1"+"§"+"10"+"§");*/
             //    Toast.makeText(getBaseContext(),"Sucessfully Registered!",Toast.LENGTH_LONG).show();
 
-                FirebaseDatabase database_b = FirebaseDatabase.getInstance();
-                final DatabaseReference myRefb = database_b.getReference("Login");
-                myRefb.addListenerForSingleValueEvent(new ValueEventListener() {
+                FirebaseDatabase database_b = FirebaseDatabase.getInstance();//Firebase Object
+                final DatabaseReference myRefb = database_b.getReference("Login");//Child specific object
+                myRefb.addListenerForSingleValueEvent(new ValueEventListener() { // value listener to get all data once in a go
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot)
+                    public void onDataChange(DataSnapshot dataSnapshot) // Through dataSnapShot
                     {
-                        value1 = dataSnapshot.getValue().toString();
-                        System.out.println("Login ********************" + value1);
+                        value1 = dataSnapshot.getValue().toString();//store all data in value1
+                        System.out.println("Login ********************" + value1);// display result in console
                     }
 
                     @Override
@@ -119,19 +121,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        value1 = value1.substring(1, value1.length() - 1);
-        Scanner in = new Scanner(value1).useDelimiter("\\,");
-        int count = 0;
+        value1 = value1.substring(1, value1.length() - 1); // remove first and last character
+        Scanner in = new Scanner(value1).useDelimiter("\\,"); //object "in" for scanner class created
+        int count = 0;//initialise count to 0
         while (in.hasNext() == true) {
             datab++;
             String data = in.next();
-            String ID = data.substring(data.indexOf("=") + 1, data.indexOf("§"));
-            System.out.println("***********************" + ID);
-            if (ID.equalsIgnoreCase(UserEmail.getText().toString()) == true) {
-                count++;
-                Scanner inn = new Scanner(data).useDelimiter("\\§");
+            String ID = data.substring(data.indexOf("=") + 1, data.indexOf("§"));//Delimit user IDs
+            System.out.println("***********************" + ID);//Display on console
+            if (ID.equalsIgnoreCase(UserEmail.getText().toString()) == true) {//Check if user ID entered is correct
+                count++;//If correct, count +1
+                Scanner inn = new Scanner(data).useDelimiter("\\§");// Scanner "inn"
                 int cc = 0;
-                while (inn.hasNext() == true) {
+                while (inn.hasNext() == true) {//Loop to check password
                     String details = inn.next();
                     if (cc == 1) {
                         if (details.equals(UserPassword.getText().toString()) == true) {
@@ -159,7 +161,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-
+//Async task used to execute networking tasks and operations in background.
 
     class PostClass extends AsyncTask<String, Void, Void> {
         private final Context context;
@@ -170,36 +172,36 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         protected void onPreExecute() {
             progress = new ProgressDialog(this.context);
-            progress.setMessage("Loading");
+            progress.setMessage("Loading"); // Loading Sign while network executing queries.
             progress.show();
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT) // Minimum level KITKAT
         @Override
         protected Void doInBackground(String... params) {
             //{M1=Final Year Project§10§2018/04/01 5:17:17§Task1§10§, M2=Milestone Project§3§2018/04/02 4:17:17§Task1§10§}
-            sessions=null;
-            arrayList = new ArrayList<String>();
-            adapter = new ArrayAdapter<String>(HomeActivity.this, android.R.layout.simple_list_item_1, arrayList);
-            result=value;
+            sessions=null;//Initialise Sessions to null
+            arrayList = new ArrayList<String>();//Arraylist initialised
+            adapter = new ArrayAdapter<String>(HomeActivity.this, android.R.layout.simple_list_item_1, arrayList);//adapter created and initialised
+            result=value;//store value in result
             //Get the session unique ID
-            System.out.println("**********************************"+value+"");
-            if(result.equals("")==false){
-                lengthh = 0;
-                for (int i = 0; i < result.length(); i++) {
+            System.out.println("**********************************"+value+"");//display on console
+            if(result.equals("")==false){ // check if result is not empty
+                lengthh = 0;//length 0
+                for (int i = 0; i < result.length(); i++) { // loop to get total milestone count in the database
                     char c = result.charAt(i);
                     if (c == ',') {
                         lengthh++;
                     }
                 }
                 num = 0;
-                result = result.substring(1, result.length()-1);
-                System.out.println("*********************"+result);
-                sessions = new String[++lengthh];
+                result = result.substring(1, result.length()-1); // remove the brackets which we get from the firebase database
+                System.out.println("*********************"+result);//display updated results on console
+                sessions = new String[++lengthh];//initialise array with total milestones
                 //arman7parsa=Milestone Project§3§2018/04/02 4:17:17§Task1§10§, parthprsshah=Final Year Project§10§2018/04/01 5:17:17§Task1§10§
                 Scanner in = new Scanner(result).useDelimiter("\\,");
                 int neww=0;
-                while (in.hasNext() == true) {
+                while (in.hasNext() == true) {// Whileloop to populate listview in the MainActivity or Home Page
                     String gen="";
                     String G = in.next();
                     G = G.trim();
